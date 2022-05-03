@@ -7,7 +7,7 @@
 
             <div class="mb-2">
                 <label for="title" class="form-label">Titolo</label>
-                <input type="text" value="{{old('title')}}" class="form-control @error('title') is-invalid @enderror" id="title" name="title" aria-describedby="emailHelp">
+                <input type="text" value="{{old('title') ?: $title}}" class="form-control @error('title') is-invalid @enderror" id="title" name="title" aria-describedby="emailHelp">
                 @error('title')
                     <div class="invalid-feedback">
                         {{$message}}
