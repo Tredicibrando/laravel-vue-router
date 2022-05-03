@@ -27,7 +27,14 @@
             <td>{{ $post->description }}</td>
             <td>{{ $post->published_at }}</td>
             <td>
-                <a class="btn btn-danger" href="{{route('admin.posts.edit', $post )}}">Modifica</a>
+                <a class="btn btn-warning" href="{{route('admin.posts.edit', $post )}}">Modifica</a>
+            </td>
+            <td>
+                <form action="{{route('admin.posts.destroy',$post)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Elimina</button>
+                </form>
             </td>
           </tr>
           @endforeach
