@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -26,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +38,32 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:100',
+            'description' => 'required|string',
+            'published_at' => 'nullable|date|before_or_equal:today'
+        ]);
+
+        $data = $request->all();
+
+        $slug = Str::slug( $data['title']);
+        $slug_base = $slug;
+        $counter=1;
+
+        $current_post = Post::where('slug',$slug)->first();
+        while($current_post){
+            $slug = $slug_base.'-'.$counter;
+            $counter++;
+            $current_post = Post::where('slug',$slug)->first();
+        }
+
+
+        $post= new Post();
+        $post->fill($data);
+        $post->slug = $slug;
+        $post->save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -59,7 +85,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.posts.edit');
     }
 
     /**
@@ -69,9 +95,37 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:100',
+            'description' => 'required|string',
+            'published_at' => 'nullable|date|before_or_equal:today'
+        ]);
+
+        $data = $request->all();
+        
+
+        if($post->title != $data['title']){
+            $slug = Str::slug($data['title']);;
+            $slug_base = $slug;
+
+            $counter = 1;
+            $current_post = Post::where('slug',$slug)->first();
+
+            while($current_post){
+                $slug = $slug_base.'-'.$counter;
+                $counter++;
+                $current_post = Post::where('slug',$slug)->first();
+            }
+
+        }
+
+        $data['slug'] = $slug;
+
+        $post->update($data);
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
