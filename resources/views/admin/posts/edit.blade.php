@@ -16,6 +16,20 @@
                 @enderror
             </div>
 
+            <div class="form-group">
+                <label for="category_id">Seleziona una categoria:</label>
+                <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" aria-label="Default select example" name="category_id">
+                    <option value="">seleziona una categoria</option>
+                    @foreach ($categories as $category)
+                        <option {{old('category_id') == $category->id ? 'selected': '' }} value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                    @error('category_id')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </select>
+            </div>
 
             <div class="mb-2">
                 <label for="cover" class="form-label">Cover</label>
