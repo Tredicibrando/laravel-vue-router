@@ -7,12 +7,27 @@
 
             <div class="mb-2">
                 <label for="title" class="form-label">Titolo</label>
-                <input type="text" value="{{old('title') ?: $title}}" class="form-control @error('title') is-invalid @enderror" id="title" name="title" aria-describedby="emailHelp">
+                <input type="text" value="{{old('title') }}" class="form-control @error('title') is-invalid @enderror" id="title" name="title" aria-describedby="emailHelp">
                 @error('title')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
                 @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="category_id">Seleziona una categoria:</label>
+                <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" aria-label="Default select example" name="category_id">
+                    <option value="">seleziona una categoria</option>
+                    @foreach ($categories as $category)
+                        <option {{old('category_id') == $category->id ? 'selected': '' }} value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                    @error('category_id')
+                        <div class="invalid-feedback">
+                            {{$message}}
+                        </div>
+                    @enderror
+                </select>
             </div>
 
 
