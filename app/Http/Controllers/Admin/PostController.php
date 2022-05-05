@@ -116,6 +116,7 @@ class PostController extends Controller
 
             $counter = 1;
             $current_post = Post::where('slug',$slug)->first();
+            $data['slug'] = $slug;
 
             while($current_post){
                 $slug = $slug_base.'-'.$counter;
@@ -125,7 +126,7 @@ class PostController extends Controller
 
         }
 
-        $data['slug'] = $slug;
+        
 
         $post->update($data);
 
