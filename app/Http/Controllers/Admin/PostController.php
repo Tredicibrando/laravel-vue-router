@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at','desc')->get();
+        $posts = Post::with(['category','tags'])->orderBy('created_at','desc')->get();
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -88,8 +89,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        
         $categories = Category::all();
-        return view('admin.posts.edit',compact('post','categories'));
+        $tags = Tag::all();;
+        return view('admin.posts.edit',compact('post','categories','tags'));
     }
 
     /**
@@ -104,7 +107,9 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:100',
             'description' => 'required|string',
-            'published_at' => 'nullable|date|before_or_equal:today'
+            'published_at' => 'nullable|date|before_or_equal:today',
+            'tags' => 'exists:tags,id',
+
         ]);
 
         $data = $request->all();

@@ -16,6 +16,8 @@
                 @enderror
             </div>
 
+
+            {{--category --}}
             <div class="form-group">
                 <label for="category_id">Seleziona una categoria:</label>
                 <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" aria-label="Default select example" name="category_id">
@@ -31,6 +33,18 @@
                 </select>
             </div>
 
+
+            {{--tags --}}
+            <div class="d-flex">
+                @foreach ($tags as $tag)
+                    <div class="form-group form-check p-3">
+                        <input type="checkbox" {{ $post->tags->contains( $tag ) ? 'checked' : '' }} class="form-check-input" value="{{ $tag->id }}" name="tags[]" id="tags{{ $tag->id }}">
+                        <label class="form-check-label" for="tags{{ $tag->id }}">{{ $tag->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+           
+            {{-- cover --}}
             <div class="mb-2">
                 <label for="cover" class="form-label">Cover</label>
                 <input type="text" value="{{old('cover') ?: $post->cover}}" class="form-control @error('title') is-invalid @enderror" id="cover" name="cover">
