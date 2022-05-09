@@ -11,15 +11,32 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                container:{
+                    center: true,
+                }
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/front.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="root">ciao vue</div>
+    <div id="root"></div>
+    <script src="{{asset('js/front.js')}}"></script>
 </body>
 </html>
