@@ -7,11 +7,24 @@
                     <img class="" src="https://picsum.photos/350/250" alt="">
                     <div class="px-1 py-1">
                         <h4 class="py-2 post_title overflow-hidden">{{ post.title }} </h4>
-                        <p v-for="tag in post.tags" :key="tag.id" class=" text-center rounded-full post_description text-small bg-orange-400/50">{{tag.name}}</p>
+                       <div class="flex-col gap-5">
+                            <p 
+                                v-for="tag in post.tags" 
+                                :key="tag.id" 
+                                class="my-2 tag text-center rounded-full post_description text-small bg-orange-400/50">
+                                    <span class="p-2">  
+                                        {{tag.name}}
+                                    </span>
+                            </p>
+                            <p 
+                                class="my-2 tag text-center italic  text-small ">
+                                    {{post.category.name}}
+                            </p>    
+                        </div>
                         <router-link tag="button" 
-                            class="rounded-full mt-4 bg-violet-600  mb-2 text-center text-small" 
+                            class="transition-shadow rounded mt-4 bg-violet-600  mb-2 text-center text-small w-full" 
                             :to=" { name:'posts.show', params: {slug: post.slug} } ">
-                                <span class="p-2">more...</span>
+                                <span class="p-2">discover more</span>
                         </router-link>
                     </div>
                 </div>
@@ -59,4 +72,8 @@
     .post_description{
         max-width: 150px;
     }
+
+    .tag{
+    width: max-content;
+}
 </style>

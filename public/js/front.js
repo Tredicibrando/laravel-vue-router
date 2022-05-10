@@ -1923,6 +1923,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1955,6 +1975,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2050,7 +2083,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".img_wrapper[data-v-88290a5c] {\n  max-width: 1504px;\n}", ""]);
+exports.push([module.i, ".img_wrapper[data-v-88290a5c] {\n  max-width: 1504px;\n}\n.tag[data-v-88290a5c] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n}", ""]);
 
 // exports
 
@@ -2069,7 +2102,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".post_title[data-v-55f45c7e] {\n  text-transform: capitalize;\n  font-weight: 500;\n  max-width: 120px;\n  max-height: 62px;\n  font-size: 1rem;\n}\n.post_description[data-v-55f45c7e] {\n  max-width: 150px;\n}", ""]);
+exports.push([module.i, ".post_title[data-v-55f45c7e] {\n  text-transform: capitalize;\n  font-weight: 500;\n  max-width: 120px;\n  max-height: 62px;\n  font-size: 1rem;\n}\n.post_description[data-v-55f45c7e] {\n  max-width: 150px;\n}\n.tag[data-v-55f45c7e] {\n  width: -webkit-max-content;\n  width: -moz-max-content;\n  width: max-content;\n}", ""]);
 
 // exports
 
@@ -3265,30 +3298,58 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "container mx-auto p-4" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("h1", { staticClass: "text-2xl capitalize" }, [
-          _vm._v(_vm._s(_vm.post.title)),
+    _c("div", { staticClass: "container mx-auto p-4" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("h1", { staticClass: "text-2xl capitalize" }, [
+        _vm._v(_vm._s(_vm.post.title)),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex gap-5" },
+        [
+          _vm._l(_vm.post.tags, function (tag) {
+            return _c(
+              "p",
+              {
+                key: tag.id,
+                staticClass:
+                  "my-2 tag text-center rounded-full post_description text-small bg-orange-400/50",
+              },
+              [
+                _c("span", { staticClass: "p-2" }, [
+                  _vm._v(
+                    "  \n                                " +
+                      _vm._s(tag.name) +
+                      "\n                            "
+                  ),
+                ]),
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "my-2 tag text-center italic  text-small " }, [
+            _vm._v(
+              "\n                        " +
+                _vm._s(_vm.post.category.name) +
+                "\n                    "
+            ),
+          ]),
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("div", [
+        _c("p", [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.post.description) +
+              "\n            "
+          ),
         ]),
-        _vm._v(" "),
-        _vm._l(_vm.post.tags, function (tag) {
-          return _c(
-            "p",
-            {
-              key: tag.id,
-              staticClass:
-                " text-center rounded-full post_description text-small bg-orange-400/50",
-            },
-            [_vm._v(_vm._s(tag.name))]
-          )
-        }),
-      ],
-      2
-    ),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -3357,32 +3418,66 @@ var render = function () {
                     _vm._v(_vm._s(post.title) + " "),
                   ]),
                   _vm._v(" "),
-                  _vm._l(post.tags, function (tag) {
-                    return _c(
-                      "p",
-                      {
-                        key: tag.id,
-                        staticClass:
-                          " text-center rounded-full post_description text-small bg-orange-400/50",
-                      },
-                      [_vm._v(_vm._s(tag.name))]
-                    )
-                  }),
+                  _c(
+                    "div",
+                    { staticClass: "flex-col gap-5" },
+                    [
+                      _vm._l(post.tags, function (tag) {
+                        return _c(
+                          "p",
+                          {
+                            key: tag.id,
+                            staticClass:
+                              "my-2 tag text-center rounded-full post_description text-small bg-orange-400/50",
+                          },
+                          [
+                            _c("span", { staticClass: "p-2" }, [
+                              _vm._v(
+                                "  \n                                    " +
+                                  _vm._s(tag.name) +
+                                  "\n                                "
+                              ),
+                            ]),
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass:
+                            "my-2 tag text-center italic  text-small ",
+                        },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(post.category.name) +
+                              "\n                        "
+                          ),
+                        ]
+                      ),
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
                   _c(
                     "router-link",
                     {
                       staticClass:
-                        "rounded-full mt-4 bg-violet-600  mb-2 text-center text-small",
+                        "transition-shadow rounded mt-4 bg-violet-600  mb-2 text-center text-small w-full",
                       attrs: {
                         tag: "button",
                         to: { name: "posts.show", params: { slug: post.slug } },
                       },
                     },
-                    [_c("span", { staticClass: "p-2" }, [_vm._v("more...")])]
+                    [
+                      _c("span", { staticClass: "p-2" }, [
+                        _vm._v("discover more"),
+                      ]),
+                    ]
                   ),
                 ],
-                2
+                1
               ),
             ]
           )
