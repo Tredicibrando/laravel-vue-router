@@ -49924,27 +49924,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/front.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/front.scss ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!*****************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/front.scss ***!
-  \*****************************************************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Giovanni\Desktop\Boolean\Progetti_classe_54\Laravel\laravel-api\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Giovanni\Desktop\Boolean\Progetti_classe_54\Laravel\laravel-api\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Giovanni\Desktop\Boolean\Progetti_classe_54\Laravel\laravel-api\resources\sass\front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! C:\Users\Giovanni\Desktop\Boolean\Progetti_classe_54\Laravel\laravel-vue-router\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Giovanni\Desktop\Boolean\Progetti_classe_54\Laravel\laravel-vue-router\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
