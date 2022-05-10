@@ -6,6 +6,8 @@ Vue.use(VueRouter)
 
 import Posts from '../pages/Posts.index.vue'
 import Post from '../pages/Post.show.vue'
+import FileNot from '../pages/404.vue'
+
 const routes = [
     {
         path: '/posts',
@@ -18,6 +20,14 @@ const routes = [
         name: 'posts.show',
         component: Post,
     },
+
+    {
+        path: '/404',
+        name: '404',
+        component: FileNot,
+    },
+
+
 
 ]
 
